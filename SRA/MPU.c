@@ -24,31 +24,6 @@ SOFTWARE.
 
 #include "MPU.h"
 
-#define I2C_MASTER_SCL_IO    21   /*!< gpio number for I2C master clock */
-#define I2C_MASTER_SDA_IO    22    /*!< gpio number for I2C master data  */
-#define I2C_MASTER_NUM I2C_NUM_1   /*!< I2C port number for master dev */
-#define I2C_MASTER_TX_BUF_DISABLE   0   /*!< I2C master do not need buffer */
-#define I2C_MASTER_RX_BUF_DISABLE   0   /*!< I2C master do not need buffer */
-#define I2C_MASTER_FREQ_HZ    100000     /*!< I2C master clock frequency */
-
-#define MPU6050_ADDR  0x68    /*!< slave address for BH1750 sensor */
-#define WRITE_BIT  I2C_MASTER_WRITE /*!< I2C master write */
-#define READ_BIT   I2C_MASTER_READ  /*!< I2C master read */
-#define ACK_CHECK_EN   0x1     /*!< I2C master will check ack from slave*/
-#define ACK_CHECK_DIS  0x0     /*!< I2C master will not check ack from slave */
-#define ACK_VAL    0x0         /*!< I2C ack value */
-#define NACK_VAL   0x1         /*!< I2C nack value */
-
-#define ALPHA 0.9934
-
-#define RAD_TO_DEG 57.27272727
-
-#define BUFF_SIZE 6
-#define DELAY_TIME_BETWEEN_ITEMS_MS   5 /*!< delay time between different test items, dt should be small */
-
-#define ACCE_START_ADD 0x3B
-#define GYRO_START_ADD 0x43
-
 static float counter = 0;
 static uint32_t timer = 0;
 static float dt = 0;
@@ -96,7 +71,8 @@ esp_err_t mpu6050_read_acce(i2c_port_t i2c_num, uint8_t* data_rd, size_t size)
 //Read gyroscope values
 esp_err_t mpu6050_read_gyro(i2c_port_t i2c_num, uint8_t* data_rd, size_t size)
 {
-    if (size == 0) {
+    if (size == 0) 
+    {
         return ESP_OK;
     }
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
@@ -105,7 +81,8 @@ esp_err_t mpu6050_read_gyro(i2c_port_t i2c_num, uint8_t* data_rd, size_t size)
     i2c_master_write_byte(cmd, GYRO_START_ADD, ACK_CHECK_EN);
     i2c_master_start(cmd);
     i2c_master_write_byte(cmd, ( MPU6050_ADDR << 1 ) | READ_BIT, ACK_CHECK_EN);
-    if (size > 1) {
+    if (size > 1) 
+    {
         i2c_master_read(cmd, data_rd, size - 1, ACK_VAL);
     }
     i2c_master_read_byte(cmd, data_rd + size - 1, NACK_VAL);
@@ -152,22 +129,24 @@ void shift_buf(uint8_t* buf_1, int16_t* buf_2, int len)
 uint32_t msec()
 {
     uint32_t time;
-    time = system_get_time();
+    time = esp_timer_get_time();
     return time;
 }
 
 //Add complimentary filter on raw accelerometer and gyroscope values 
-esp_err_t complimentory_filter(int16_t* acce_raw_value, int16_t* gyro_raw_value, float complimentary_angle[], int len, float initial_acce_angle)
+esp_err_t complimentary_filter(int16_t* acce_raw_value, int16_t* gyro_raw_value, float complimentary_angle[], int len, float initial_acce_angle)
 {
     int i;
     counter++;
-    if(counter == 1) {
+    if(counter == 1) 
+    {
         acce_angle[0] = (atan2(acce_raw_value[1], acce_raw_value[2]) * RAD_TO_DEG);
         acce_angle[1] = (atan2(-(acce_raw_value[0]), acce_raw_value[2]) * RAD_TO_DEG);
-        for( i = 0; i < 2; i++) {
+        for( i = 0; i < 2; i++) 
+        {
             complimentary_angle[i] =  acce_angle[i];
         }
-        timer = system_get_time();
+        timer = esp_timer_get_time();
         return ESP_OK;
     }
     dt = (float) (msec() - timer) / 1000000;
@@ -175,7 +154,8 @@ esp_err_t complimentory_filter(int16_t* acce_raw_value, int16_t* gyro_raw_value,
     acce_angle[0] = (atan2(acce_raw_value[1], acce_raw_value[2]) * RAD_TO_DEG);
     acce_angle[1] = (atan2(-(acce_raw_value[0]), acce_raw_value[2]) * RAD_TO_DEG);
     acce_angle[1] = acce_angle[1] - initial_acce_angle;
-    for( i = 0; i < 2; i++) {
+    for( i = 0; i < 2; i++) 
+    {
         // printf("gyro:%f\n",gyro_angle[i] );
         // printf("acce:%f\n",acce_angle[i] );
         gyro_rate[i] = gyro_raw_value[i]/131;
@@ -189,8 +169,8 @@ esp_err_t complimentory_filter(int16_t* acce_raw_value, int16_t* gyro_raw_value,
 //Proceed only when MPU is initialise
 void start_mpu()
 {
-    int ret;
-    ret = mpu6050_init(I2C_MASTER_NUM);
+    
+    int ret = mpu6050_init(I2C_MASTER_NUM);
     
     //CHECK IF MPU IS ACTIVE
     while(ret != ESP_OK) 
@@ -206,18 +186,17 @@ void start_mpu()
 //Calculate roll and pitch angles of the MPU after applying the complimentary filter
 void calculate_angle(uint8_t* acce_rd ,uint8_t* gyro_rd,int16_t* acce_raw_value,int16_t* gyro_raw_value, float initial_acce_angle,float *roll_angle,float *pitch_angle)
 {
-    int ret;
+
     /*Read raw gyro values*/
-    ret = mpu6050_read_gyro(I2C_MASTER_NUM, gyro_rd, BUFF_SIZE);
+    int ret = mpu6050_read_gyro(I2C_MASTER_NUM, gyro_rd, BUFF_SIZE);
     shift_buf(gyro_rd, gyro_raw_value, BUFF_SIZE/2);
 
-
     /*Read raw acce values*/
-    ret = mpu6050_read_acce(I2C_MASTER_NUM, acce_rd, BUFF_SIZE);
+	ret = mpu6050_read_acce(I2C_MASTER_NUM, acce_rd, BUFF_SIZE);
     shift_buf(acce_rd, acce_raw_value, BUFF_SIZE/2);
 
     //Get pitch angle using complimentary filter
-    complimentory_filter(acce_raw_value, gyro_raw_value, complimentary_angle, BUFF_SIZE/2,initial_acce_angle);
+    complimentary_filter(acce_raw_value, gyro_raw_value, complimentary_angle, BUFF_SIZE/2,initial_acce_angle);
     
     *roll_angle = complimentary_angle[0];
     *pitch_angle = complimentary_angle[1];

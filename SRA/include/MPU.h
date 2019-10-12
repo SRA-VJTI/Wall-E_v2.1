@@ -76,9 +76,10 @@ void shift_buf(uint8_t* buf_1, int16_t* buf_2, int len);
 
 //Returns time in miliseconds elapsed since start of system
 uint32_t msec();
+int64_t esp_timer_get_time(void);
 
 //Add complimentary filter on raw accelerometer and gyroscope values 
-esp_err_t complimentory_filter(int16_t* acce_raw_value, int16_t* gyro_raw_value, float complimentary_angle[], int len, float initial_acce_angle);
+esp_err_t complimentary_filter(int16_t* acce_raw_value, int16_t* gyro_raw_value, float complimentary_angle[], int len, float initial_acce_angle);
 
 //Proceed only when MPU is initialise
 void start_mpu();

@@ -48,13 +48,13 @@ SOFTWARE.
 #define EXAMPLE_WIFI_SSID "WIFI"
 #define EXAMPLE_WIFI_PASS "PASSWORD"
 
-char *gcvt(double number, int ndigit, char *buf);
-
 //Control function for Wifi initialisation and working
 esp_err_t event_handler(void *ctx, system_event_t *event);
 
 //Intialise WIFI for ESP32
 void initialise_wifi();
+
+char *gcvt(double number, int ndigit, char *buf);
 
 //Display the webserver, and change values as set on the webpage
 void http_server_netconn_serve(struct netconn *conn,float *setpoint,float *pitchKp,float *pitchKd,float *pitchKi,float *yaw_kP,float *yaw_kD,float *yaw_kI, float *forward_offset, float *forward_buffer);
