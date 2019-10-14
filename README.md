@@ -7,7 +7,15 @@ Run the following command for a quick install:
 ```bash
 ./wall_e_install.sh
 ```
+##Command mapping:
 
+Following is the command mapping from the legacyGNU make- build to CMake-based build:
+```bash
+make clean -> idf.py -p PORT clean
+make flash -> idf.py -p PORT flash
+make monitor -> idf.py -p PORT monitor
+```
+Here, PORT specifies the serial port (e.g. /dev/ttyUSB0)
  
 
 
