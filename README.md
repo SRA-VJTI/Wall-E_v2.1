@@ -7,7 +7,7 @@ Run the following command for a quick install:
 ```bash
 ./wall_e_install.sh
 ```
-##Command mapping:
+## Command mapping:
 
 Following is the command mapping from the legacyGNU make- build to CMake-based build:
 ```bash
