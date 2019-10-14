@@ -43,5 +43,5 @@ void app_main()
 		Basic Function for task creation
 	*/
 
-    xTaskCreate(&blink_task,"blink task",4096,NULL,1,NULL);
+	xTaskCreate(&blink_task,"blink task",4096,NULL,1,NULL);
 }
