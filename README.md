@@ -5,7 +5,7 @@
 Run the following command for a quick install:
 
 ```bash
-./install.sh
+./wall_e_install.sh
 ```
 
  
