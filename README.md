@@ -11,9 +11,10 @@ Run the following command for a quick install:
 
 Following is the command mapping from the legacyGNU make- build to CMake-based build:
 ```bash
-make clean -> idf.py -p PORT clean
+make clean -> idf.py clean
+make menuconfig -> idf.py menuconfig
 make flash -> idf.py -p PORT flash
-make monitor -> idf.py -p PORT monitor
+make monitor -> idf.py monitor
 ```
 Here, PORT specifies the serial port (e.g. /dev/ttyUSB0)
  
