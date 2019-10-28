@@ -9,7 +9,7 @@ Run the following command for a quick install:
 ```
 ## Command mapping:
 
-Following is the command mapping from the legacyGNU make- build to CMake-based build:
+Following is the command mapping from the legacyGNU-make build to CMake-based build:
 ```bash
 make clean -> idf.py clean
 make menuconfig -> idf.py menuconfig

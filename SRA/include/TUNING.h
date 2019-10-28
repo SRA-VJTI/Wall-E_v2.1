@@ -45,8 +45,8 @@ SOFTWARE.
 #include "lwip/api.h"
 #include <stdlib.h>
 
-#define EXAMPLE_WIFI_SSID "WIFI"
-#define EXAMPLE_WIFI_PASS "PASSWORD"
+#define EXAMPLE_WIFI_SSID CONFIG_ESP_WIFI_SSID
+#define EXAMPLE_WIFI_PASS CONFIG_ESP_WIFI_PASSWORD
 
 //Control function for Wifi initialisation and working
 esp_err_t event_handler(void *ctx, system_event_t *event);
