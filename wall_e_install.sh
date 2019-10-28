@@ -13,7 +13,10 @@ mkdir ~/esp/esp-idf/codes
 cd ~
 git clone https://github.com/laukik-hase/Wall-E_v2.1
 cd Wall-E_v2.1
+
+cp Kconfig ~/esp/esp-idf
 cp -r . ~/esp/esp-idf/codes
+
 cd ~/esp/esp-idf/codes
 cp -r SRA ~/esp/esp-idf/components
 
