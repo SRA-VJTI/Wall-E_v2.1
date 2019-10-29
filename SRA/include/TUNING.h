@@ -54,6 +54,8 @@ esp_err_t event_handler(void *ctx, system_event_t *event);
 //Intialise WIFI for ESP32
 void initialise_wifi();
 
+void wait_till_wifi_connects();
+
 //Display the webserver, and change values as set on the webpage
 void http_server_netconn_serve(struct netconn *conn,float *setpoint,float *pitchKp,float *pitchKd,float *pitchKi,float *yaw_kP,float *yaw_kD,float *yaw_kI, float *forward_offset, float *forward_buffer);
 

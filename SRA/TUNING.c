@@ -27,10 +27,12 @@ SOFTWARE.
 
 static EventGroupHandle_t wifi_event_group;
 
+const int CONNECTED_BIT = BIT0;
+
 //Control function for Wifi initialisation and working
 esp_err_t event_handler(void *ctx, system_event_t *event)
 {
-    const int CONNECTED_BIT = BIT0;
+    //const int CONNECTED_BIT = BIT0;
     switch(event->event_id) {
     case SYSTEM_EVENT_STA_START:
         esp_wifi_connect();
@@ -77,6 +79,12 @@ void initialise_wifi(void)
     ESP_ERROR_CHECK( esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
     ESP_ERROR_CHECK( esp_wifi_start() );
 
+}
+
+void wait_till_wifi_connects()
+{
+
+  xEventGroupWaitBits(wifi_event_group, CONNECTED_BIT, false, true, portMAX_DELAY);
 }
 
 //Display the webserver, and change values as set on the webpage
