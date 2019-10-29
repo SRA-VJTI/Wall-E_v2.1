@@ -13,10 +13,10 @@ Following is the command mapping from the legacyGNU-make build to CMake-based bu
 ```bash
 make clean -> idf.py clean
 make menuconfig -> idf.py menuconfig
-make flash -> idf.py -p PORT flash
+make flash -> idf.py -p PORT -b BAUD flash
 make monitor -> idf.py monitor
 ```
-Here, PORT specifies the serial port (e.g. /dev/ttyUSB0)
+Here, PORT specifies the serial port (e.g. /dev/ttyUSB0); BAUD specifies the flash-speed in bps(115200 - 2000000)
  
 
 
