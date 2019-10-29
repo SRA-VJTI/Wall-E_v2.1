@@ -18,7 +18,7 @@ make monitor -> idf.py monitor
 ```
 Here, PORT specifies the serial port (e.g. /dev/ttyUSB0); BAUD specifies the flash-speed in bps(115200 - 2000000)
 
-***Note**: For existing ODF installations, replace the Kconfig file from ~/esp/esp-idf with the one here.*
+***Note**: For existing IDF installations, replace the Kconfig file from ~/esp/esp-idf with the one here.*
  
 
 
