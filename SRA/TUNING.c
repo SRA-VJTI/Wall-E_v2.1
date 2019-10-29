@@ -53,6 +53,12 @@ esp_err_t event_handler(void *ctx, system_event_t *event)
 void initialise_wifi(void)
 
 {
+    esp_err_t ret = nvs_flash_init();
+    if (ret != ESP_OK) 
+    {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
     tcpip_adapter_init();
     wifi_event_group = xEventGroupCreate();
     ESP_ERROR_CHECK( esp_event_loop_init(event_handler, NULL) );

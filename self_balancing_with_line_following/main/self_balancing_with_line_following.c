@@ -272,9 +272,8 @@ void balance_with_line_follow_task(void *arg)
 
 void app_main()
 {
-    nvs_flash_init();
+    //nvs_flash_init();
     initialise_wifi();
+    xTaskCreate(&http_server,"server",10000,NULL,5,NULL);
     xTaskCreate(&balance_with_line_follow_task,"self_balancing with line_following",100000,NULL,1,NULL);
-    xTaskCreate(&http_server,"server",10000,NULL,2,NULL);
-
 }
