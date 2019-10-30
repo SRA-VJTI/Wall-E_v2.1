@@ -302,7 +302,7 @@ mainmenu "Espressif IoT Development Framework Configuration"
 
     endmenu # Compiler Options
 
-    menu "Tuning parameters"
+    menu "Wi-Fi configuration"
 
     config ESP_WIFI_SSID
         string "WiFi SSID"

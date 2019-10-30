@@ -25,6 +25,7 @@ void drive_task(void *arg)
 		for(int i = 60; i <= 100; i++)
 		{
 			bot_forward(MCPWM_UNIT_0, MCPWM_TIMER_0, i, i);
+			vTaskDelay(100 / 10);
 		}
 
 		bot_stop(MCPWM_UNIT_0, MCPWM_TIMER_0);
@@ -33,6 +34,7 @@ void drive_task(void *arg)
 		for(int i = 60; i <= 100; i++)
 		{
 			bot_backward(MCPWM_UNIT_0, MCPWM_TIMER_0, i, i);
+			vTaskDelay(100 / 10);
 		}
 
 		bot_stop(MCPWM_UNIT_0, MCPWM_TIMER_0);

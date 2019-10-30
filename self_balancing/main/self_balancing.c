@@ -136,8 +136,10 @@ void balance_task(void *arg)
 void app_main()
 {
     
-    nvs_flash_init();
+    //nvs_flash_init();
     initialise_wifi();
+    wait_till_wifi_connects();
+    
     xTaskCreate(&balance_task,"balance task",100000,NULL,1,NULL);
     xTaskCreate(&http_server, "http_server", 10000, NULL, 2, NULL);
 }
