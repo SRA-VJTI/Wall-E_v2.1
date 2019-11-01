@@ -3,7 +3,6 @@
 #include <math.h>
 
 #include "SRA18.h"
-#include "MPU.h"
 #include "TUNING.h"
 
 adc1_channel_t channel[4] = {ADC_CHANNEL_7, ADC_CHANNEL_6, ADC_CHANNEL_0, ADC_CHANNEL_3};

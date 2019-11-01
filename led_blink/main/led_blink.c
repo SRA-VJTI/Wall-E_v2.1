@@ -6,9 +6,7 @@
 #include <stdlib.h>
 
 //Components
-#include "MPU.h"
 #include "SRA18.h"
-#include "TUNING.h"
 
 void blink_task(void *arg)
 {

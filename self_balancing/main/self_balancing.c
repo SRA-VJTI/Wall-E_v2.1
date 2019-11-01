@@ -12,7 +12,7 @@
 #define MAX_PITCH_CORRECTION 90
 #define MAX_PITCH_CUMULATIVE_ERROR 850
 
-#define MAX_PWM 90 
+#define MAX_PWM 100
 #define MIN_PWM 60
 
 //Array to store channels of ADC
@@ -135,10 +135,8 @@ void balance_task(void *arg)
 
 void app_main()
 {
-    
-    //nvs_flash_init();
     initialise_wifi();
-    wait_till_wifi_connects();
+    //wait_till_wifi_connects();
     
     xTaskCreate(&balance_task,"balance task",100000,NULL,1,NULL);
     xTaskCreate(&http_server, "http_server", 10000, NULL, 2, NULL);
