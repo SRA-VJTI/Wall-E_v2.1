@@ -10,8 +10,8 @@
 
 
 //Limiting Parameters
-#define MAX_PITCH_CORRECTION 80
-#define MAX_PITCH_CUMULATIVE_ERROR 750
+#define MAX_PITCH_CORRECTION 90
+#define MAX_PITCH_CUMULATIVE_ERROR 850
 
 #define MAX_PWM 100
 #define MIN_PWM 60
@@ -22,20 +22,20 @@
 adc1_channel_t channel[4] = {ADC_CHANNEL_7,ADC_CHANNEL_6,ADC_CHANNEL_0,ADC_CHANNEL_3};
 
 //Line Following Tuning Parameters
-float yaw_kP= 5.1;
+float yaw_kP= 5.6;
 float yaw_kI= 0;
-float yaw_kD= 1.5;
+float yaw_kD= 1.7;
 
 //Self Balancing Tuning Parameters
 float pitch_kP=  15.1;//5.85;       
 float pitch_kI=  0.075;//95;          
 float pitch_kD=  9;
 
-float setpoint = -3.5;
+float setpoint = -5.0	;//-3.5***-2.5
 float initial_acce_angle = 0;
 float forward_angle = 0;
 
-float forward_offset = 2.251;
+float forward_offset = 0.25;//0.75***-2.251
 float forward_buffer = 3;
 
 //FOR BALANCING
