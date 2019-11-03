@@ -7,9 +7,7 @@
 
 
 //Components
-#include "MPU.h"
 #include "SRA18.h"
-#include "TUNING.h"
 
 //Declare the the channel array consisting of the ADC channel inputs
 
