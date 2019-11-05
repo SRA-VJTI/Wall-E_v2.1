@@ -8,14 +8,17 @@ Run the following commands for a quick install:
 sudo chmod +x wall_e_install.sh
 ./wall_e_install.sh
 ```
-## Command mapping:
+## Common commands:
 
-Following is the command mapping from the legacyGNU-make build to CMake-based build:
+Following are the commands for the current CMake-based build in ESP-IDF:
 ```bash
-make clean -> idf.py clean
-make menuconfig -> idf.py menuconfig
-make flash -> idf.py -p PORT -b BAUD flash
-make monitor -> idf.py monitor
+idf.py fullclean #Cleaning the build
+
+idf.py menuconfig #Setting up the various parameters for your code
+
+idf.py -p PORT -b BAUD flash #Flashing the firmware (code) onto your ESP
+
+idf.py monitor #View the output on the serial monitor
 ```
 Here, PORT specifies the serial port (e.g. /dev/ttyUSB0); BAUD specifies the flash-speed in bps(115200 - 2000000)
 
