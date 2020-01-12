@@ -25,7 +25,4 @@ cp -r . ~/esp/esp-idf/codes
 cd ~/esp/esp-idf/codes
 cp -r SRA ~/esp/esp-idf/components
 
-#Logging out
-sudo pkill -u $USER
-
 
