@@ -8,6 +8,7 @@ Run the following commands for a quick install:
 sudo chmod +x wall_e_install.sh
 ./wall_e_install.sh
 ```
+After this, log out and log back in.
 ## Common commands:
 
 Following are the commands for the current CMake-based build in ESP-IDF:
