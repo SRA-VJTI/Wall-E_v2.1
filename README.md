@@ -8,7 +8,12 @@ Run the following commands for a quick install:
 sudo chmod +x wall_e_install.sh
 ./wall_e_install.sh
 ```
-After this, log out and log back in.
+After this, test the **hello_world** example; if it runs without any errors, log out & log back in.
+```bash
+cd ~/esp/esp-idf/examples/get-started/hello_world
+idf.py flash monitor
+```
+
 ## Common commands:
 
 Following are the commands for the current CMake-based build in ESP-IDF:
