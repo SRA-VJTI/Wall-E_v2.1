@@ -8,7 +8,7 @@ Run the following commands for a quick install:
 sudo chmod +x wall_e_install.sh
 ./wall_e_install.sh
 ```
-After this, test the **hello_world** example in the same terminal; if it runs without any errors, log out & log back in.
+After this, test the **hello_world** example in the ***same terminal***; if it runs without any errors, log out & log back in.
 ```bash
 cd ~/esp/esp-idf/examples/get-started/hello_world
 idf.py flash monitor
