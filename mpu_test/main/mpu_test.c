@@ -1,5 +1,5 @@
-#include "SRA18.h"
-#include "MPU.h"
+#include "sra18.h"
+#include "mpu.h"
 
 int setpoint = 0;
 int initial_acce_angle = 0;

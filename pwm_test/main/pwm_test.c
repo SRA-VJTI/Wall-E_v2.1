@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 //Components
-#include "SRA18.h"
+#include "sra18.h"
 
 void drive_task(void *arg)
 {

@@ -12,17 +12,11 @@ cd esp-idf
 . $HOME/esp/esp-idf/export.sh
 echo ". $HOME/esp/esp-idf/export.sh" >> ~/.profile
 source ~/.profile
-mkdir ~/esp/esp-idf/codes
 
 #Wall-E files and custom configurations
 cd ~
-git clone https://github.com/laukik-hase/Wall-E_v2.1
+git clone https://github.com/SRA-VJTI/Wall-E_v2.1
 cd Wall-E_v2.1
 
-cp Kconfig ~/esp/esp-idf
-cp -r . ~/esp/esp-idf/codes
-
-cd ~/esp/esp-idf/codes
-cp -r SRA ~/esp/esp-idf/components
 
 

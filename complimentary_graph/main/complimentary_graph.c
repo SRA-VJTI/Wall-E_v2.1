@@ -1,6 +1,5 @@
-#include "SRA18.h"
-#include "MPU.h"
-#include "TUNING.h"
+#include "sra18.h"
+#include "mpu.h"
 
 float acce_angle = 0;
 float gyro_rate=0,gyro_angle =0;
@@ -8,6 +7,7 @@ static float counter = 0;
 static uint32_t timer = 0;
 static float dt = 0;
 float complimentary_angle = 0;
+
 void app_main()
 {
   uint8_t* acce_rd = (uint8_t*) malloc(BUFF_SIZE);

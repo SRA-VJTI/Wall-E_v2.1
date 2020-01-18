@@ -1,6 +1,5 @@
-#include "SRA18.h"
-#include "MPU.h"
-#include "TUNING.h"
+#include "sra18.h"
+#include "mpu.h"
 
 float acce_angle = 0;
 float gyro_rate=0,gyro_angle =0;

@@ -7,7 +7,7 @@
 
 
 //Components
-#include "SRA18.h"
+#include "sra18.h"
 
 //Declare the the channel array consisting of the ADC channel inputs
 

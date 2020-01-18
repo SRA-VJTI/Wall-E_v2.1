@@ -4,9 +4,9 @@
 #include <time.h>
 
 //Components
-#include "MPU.h"
-#include "SRA18.h"
-#include "TUNING.h"
+#include "sra18.h"
+#include "mpu.h"
+#include "tuning.h"
 
 
 //Limiting Parameters
