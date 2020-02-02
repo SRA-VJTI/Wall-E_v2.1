@@ -2,7 +2,7 @@
 
 *Official Repository for the self-balancing-line-following bot workshop, implemented with ESP32*
 
-Run the following commands for a quick install:
+Run the following commands for a quick install on **Linux-based systems**:
 
 ```bash
 sudo chmod +x wall_e_install.sh
